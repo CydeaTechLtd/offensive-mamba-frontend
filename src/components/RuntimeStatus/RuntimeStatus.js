@@ -49,23 +49,23 @@ class RuntimeStatus extends Component {
     render() {
         return (
             <>
-                <div className="clearfix" style={{ padding: '.5rem' }}>
-                    <UncontrolledDropdown className="">
-                        <DropdownToggle caret>
-                            Change Local System
-                        </DropdownToggle>
-                        {this.state.isLoading ? <DropdownMenu><DropdownItem disabled>Loading . . .</DropdownItem></DropdownMenu> : (
-                            <DropdownMenu>
-                                {
-                                    Object.keys(this.state.systemsData).map((ipaddress, i) => {
-                                    return (<DropdownItem >{ipaddress}</DropdownItem>)
-                                    })
-                                }
 
-                            </DropdownMenu>
-                        )}
-                    </UncontrolledDropdown>
-                </div>
+                <UncontrolledDropdown className="">
+                    <DropdownToggle caret>
+                        Change Local System
+                        </DropdownToggle>
+                    {this.state.isLoading ? <DropdownMenu><DropdownItem disabled>Loading . . .</DropdownItem></DropdownMenu> : (
+                        <DropdownMenu>
+                            {
+                                Object.keys(this.state.systemsData).map((ipaddress, i) => {
+                                    return (<DropdownItem >{ipaddress}</DropdownItem>)
+                                })
+                            }
+
+                        </DropdownMenu>
+                    )}
+                </UncontrolledDropdown>
+
                 <Alert color="primary">
                     <Progress color="success" value="25" ></Progress>
                 </Alert>
