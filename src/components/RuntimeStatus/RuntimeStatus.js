@@ -5,7 +5,16 @@ import API from '../../api'
 class RuntimeStatus extends Component {
     constructor(props) {
         super(props)
-        this.state = { isLoading: true, error: null, systemsData: {}, totalSystems: 0, upCount: 0, osCount: {} }
+        this.state = {
+            isLoading: true,
+            error: null,
+            systemsData: {},
+            totalSystems: 0,
+            upCount: 0,
+            osCount: {},
+            currentSystem: null,
+            systemStatuses = {}
+        }
         this.loadSystems = this.loadSystems.bind(this)
     }
 
@@ -14,13 +23,17 @@ class RuntimeStatus extends Component {
     }
 
     async loadSystems() {
-        this.setState({ 'isLoading': true })
+        this.setState({ 'isLoading': true, currentSystem: null })
         var response = await API.getAllLocalSystems()
         if (response.success) {
             var systems = response.data
             var systemsInfo = {}
             var upCount = 0
             var osCount = {}
+            var currentSystem = null;
+            if(systems.length > 0) {
+                currentSystem = systems[0]
+            }
             for (var ipaddress of systems) {
                 response = await API.getLocalSystemStatus(ipaddress)
                 console.log(response)
@@ -66,10 +79,17 @@ class RuntimeStatus extends Component {
                         )}
                     </UncontrolledDropdown>
                 </div>
-                <Alert color="primary">
-                    <Progress color="success" value="25" >Exploiting . . .</Progress>
-                    Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)
-                </Alert>
+
+                {
+                    (this.state.currentSystem === null) ? null : (
+                        <Alert color="primary">
+                            <>{this.state.currentSystem}</>
+                            <Progress color="success" value="25" >Exploiting . . .</Progress>
+                            <>Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)</>
+                        </Alert>
+                    )
+                }
+
             </>
         )
     }
