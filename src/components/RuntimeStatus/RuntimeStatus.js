@@ -13,7 +13,7 @@ class RuntimeStatus extends Component {
             upCount: 0,
             osCount: {},
             currentSystem: null,
-            systemStatuses = {}
+            systemStatuses: {}
         }
         this.loadSystems = this.loadSystems.bind(this)
     }
