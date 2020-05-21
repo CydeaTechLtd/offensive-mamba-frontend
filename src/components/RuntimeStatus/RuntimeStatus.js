@@ -92,7 +92,7 @@ class RuntimeStatus extends Component {
                     </UncontrolledDropdown>
                 </div>
                 <Alert color="primary">
-                    <>{this.state.currentSystem}</>
+                    <><span style={{fontWeight: "bolder"}}>Local System IP: </span>{this.state.currentSystem}</>
                     <Progress color="success" value="25" >Exploiting . . .</Progress>
                     <>Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)</>
                 </Alert>
