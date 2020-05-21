@@ -13,9 +13,15 @@ class RuntimeStatus extends Component {
             upCount: 0,
             osCount: {},
             currentSystem: null,
-            systemStatuses: {}
+            systemStatuses: {},
+            isLocalAgentOnline: false
         }
         this.loadSystems = this.loadSystems.bind(this)
+        this.isLocalAgentOnline = this.isLocalAgentOnline.bind(this)
+    }
+
+    async isLocalAgentOnline() {
+
     }
 
     async componentDidMount() {
@@ -60,7 +66,7 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return (this.state.currentSystem === null) ? null : (
+        return (!this.state.isLocalAgentOnline) ? null : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
