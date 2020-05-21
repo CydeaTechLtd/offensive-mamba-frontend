@@ -49,7 +49,7 @@ class RuntimeStatus extends Component {
     render() {
         return (
             <>
-                <div className="clearfix">
+                <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
                         <DropdownToggle caret style={{ width: "auto" }}>
                             Change Local System
