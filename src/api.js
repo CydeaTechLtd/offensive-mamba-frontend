@@ -24,7 +24,7 @@ var API = {
             body: JSON.stringify(body)
         })
         var responseJSON = await response.json()
-        console.log("API REQUEST RESPONSE" + responseJSON); // DEBUG INFO
+        console.log("API REQUEST RESPONSE" + JSON.stringify(responseJSON)); // DEBUG INFO
         return responseJSON
     },
     checkLoggedIn: async () => {
