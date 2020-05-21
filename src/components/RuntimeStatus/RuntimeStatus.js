@@ -67,7 +67,8 @@ class RuntimeStatus extends Component {
                     </UncontrolledDropdown>
                 </div>
                 <Alert color="primary">
-                    <Progress color="success" value="25" ></Progress>
+                    <Progress color="success" value="25" >Exploiting . . .</Progress>
+                    Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)
                 </Alert>
             </>
         )
