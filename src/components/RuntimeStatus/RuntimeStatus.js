@@ -51,7 +51,7 @@ class RuntimeStatus extends Component {
             <>
 
                 <UncontrolledDropdown className="">
-                    <DropdownToggle caret>
+                    <DropdownToggle caret style={{width: "auto"}}>
                         Change Local System
                         </DropdownToggle>
                     {this.state.isLoading ? <DropdownMenu><DropdownItem disabled>Loading . . .</DropdownItem></DropdownMenu> : (
