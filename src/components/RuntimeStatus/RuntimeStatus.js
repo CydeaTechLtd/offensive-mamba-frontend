@@ -73,3 +73,5 @@ class RuntimeStatus extends Component {
         )
     }
 }
+
+export default RuntimeStatus;

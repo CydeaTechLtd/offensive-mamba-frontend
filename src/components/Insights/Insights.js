@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import ScannerSummary from '../ScannerReports/ScannerSummary'
 import ExploitationSummary from '../ExploitationReports/ExploitationSummary'
+import RuntimeStatus from '../RuntimeStatus/RuntimeStatus'
 
 class Insights extends Component {
     render() {
@@ -14,6 +15,7 @@ class Insights extends Component {
                     </Col>
                 </Row>
                 <Container className="main">
+                    <RuntimeStatus />
                     <h2 className="border-bottom">Scanner Summary</h2>
                     <ScannerSummary />
                     <h2 className="border-bottom">Exploitation Summary</h2>
