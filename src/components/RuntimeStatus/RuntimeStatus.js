@@ -49,8 +49,8 @@ class RuntimeStatus extends Component {
     render() {
         return (
             <>
-                <div className="bg-info clearfix" style={{ padding: '.5rem' }}>
-                    <UncontrolledDropdown className="float-right">
+                <div className="clearfix" style={{ padding: '.5rem' }}>
+                    <UncontrolledDropdown className="">
                         <DropdownToggle caret>
                             Change Local System
                         </DropdownToggle>
@@ -58,7 +58,6 @@ class RuntimeStatus extends Component {
                             <DropdownMenu>
                                 {
                                     Object.keys(this.state.systemsData).map((ipaddress, i) => {
-                                        const data = this.state.systemsData[ipaddress];
                                     return (<DropdownItem >{ipaddress}</DropdownItem>)
                                     })
                                 }
