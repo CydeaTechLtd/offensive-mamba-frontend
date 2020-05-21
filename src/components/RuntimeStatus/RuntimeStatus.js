@@ -31,7 +31,7 @@ class RuntimeStatus extends Component {
             var upCount = 0
             var osCount = {}
             var currentSystem = null;
-            if(systems.length > 0) {
+            if (systems.length > 0) {
                 currentSystem = systems[0]
             }
             for (var ipaddress of systems) {
@@ -60,7 +60,8 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return (
+        return
+        (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
@@ -79,19 +80,15 @@ class RuntimeStatus extends Component {
                         )}
                     </UncontrolledDropdown>
                 </div>
-
-                {
-                    (this.state.currentSystem === null) ? null : (
-                        <Alert color="primary">
-                            <>{this.state.currentSystem}</>
-                            <Progress color="success" value="25" >Exploiting . . .</Progress>
-                            <>Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)</>
-                        </Alert>
-                    )
-                }
+                <Alert color="primary">
+                    <>{this.state.currentSystem}</>
+                    <Progress color="success" value="25" >Exploiting . . .</Progress>
+                    <>Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)</>
+                </Alert>
 
             </>
         )
+
     }
 }
 
