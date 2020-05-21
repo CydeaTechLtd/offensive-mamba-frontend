@@ -60,8 +60,7 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return
-        (this.state.currentSystem === null) ? null : (
+        return (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
