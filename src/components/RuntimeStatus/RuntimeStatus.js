@@ -21,7 +21,12 @@ class RuntimeStatus extends Component {
     }
 
     async isLocalAgentOnline() {
-
+        const userInfo = await API.getUserInfo();
+        if(userInfo.publicIP){
+            this.setState({isLocalAgentOnline: true})
+        } else {
+            this.setState({isLocalAgentOnline: false})
+        }
     }
 
     async componentDidMount() {
@@ -66,7 +71,7 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return (!this.state.isLocalAgentOnline) ? null : (this.state.currentSystem === null) ? null : (
+        return (!this.state.isLocalAgentOnline) ? (<Alert color="danger">Your network is unsafe! Offensive Mamba is not running in you Network.</Alert>) : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
