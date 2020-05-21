@@ -22,7 +22,6 @@ class RuntimeStatus extends Component {
 
     async isLocalAgentOnline() {
         const userInfo = await API.getUserInfo();
-        console.log("UserInfo: ", userInfo)
         if(userInfo.publicIP){
             this.setState({isLocalAgentOnline: true})
         } else {
@@ -31,6 +30,7 @@ class RuntimeStatus extends Component {
     }
 
     async componentDidMount() {
+        await this.isLocalAgentOnline()
         await this.loadSystems()
     }
 
