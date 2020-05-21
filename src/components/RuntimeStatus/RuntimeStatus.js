@@ -54,12 +54,12 @@ class RuntimeStatus extends Component {
                         <DropdownToggle caret>
                             Change Local System
                         </DropdownToggle>
-                        {this.state.isLoading ? null : (
+                        {this.state.isLoading ? <DropdownMenu><DropdownItem disabled>Loading . . .</DropdownItem></DropdownMenu> : (
                             <DropdownMenu>
                                 {
                                     Object.keys(this.state.systemsData).map((ipaddress, i) => {
                                         const data = this.state.systemsData[ipaddress];
-                                        return (<DropdownItem {... (data.up === true) ? null : "disabled"}></DropdownItem>)
+                                    return (<DropdownItem >{ipaddress}</DropdownItem>)
                                     })
                                 }
 
