@@ -52,7 +52,7 @@ class RuntimeStatus extends Component {
                     }
                 }
             }
-            this.setState({ error: "", systemsData: systemsInfo, totalSystems: systems.length, upCount: upCount, osCount: osCount, isLoading: false })
+            this.setState({ error: "", systemsData: systemsInfo, totalSystems: systems.length, upCount: upCount, osCount: osCount, isLoading: false, currentSystem: currentSystem })
         } else {
             this.setState({ error: response.error, isLoading: false })
             return null
