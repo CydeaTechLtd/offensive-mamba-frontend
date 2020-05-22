@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Alert, Progress, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
 import API from '../../api'
+import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faGithub} from '@fortawesome/free-brands-svg-icons'
 
 class RuntimeStatus extends Component {
     constructor(props) {
@@ -72,7 +75,7 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return (!this.state.isLocalAgentOnline) ? (<Alert color="danger">Your network is unsafe! Offensive Mamba is not running in you Network.</Alert>) : (this.state.currentSystem === null) ? null : (
+        return (!this.state.isLocalAgentOnline) ? (<Alert color="danger"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon><span style={{fontWeight: "bolder"}}>Your network is unsafe!</span> Offensive Mamba is not running in your Network.</Alert>) : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
