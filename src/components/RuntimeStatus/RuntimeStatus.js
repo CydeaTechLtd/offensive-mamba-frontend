@@ -39,8 +39,10 @@ class RuntimeStatus extends Component {
         await this.loadSystems()
         const userInfo = await API.getUserInfo();
         if(this.state.isLocalAgentOnline) {
-            const socket = io(Config.api_url, {
-                path: "/socket_" + userInfo.username,
+            const socket = io("115.186.176.141:8080" + "/socket_" + userInfo.username, {
+                transports: ['polling'],
+                upgrade: false,
+                secure: false,
                 transportOptions: {
                     polling: {
                         extraHeaders: {
@@ -49,11 +51,13 @@ class RuntimeStatus extends Component {
                     }
                 }
             });
+            socket.on("connect", () => {
+                console.log("Connected")
+            })
             socket.on("statusUpdate", (data) => {
                 console.log(data)
             })
-
-
+            socket.connect()
         }
     }
 
