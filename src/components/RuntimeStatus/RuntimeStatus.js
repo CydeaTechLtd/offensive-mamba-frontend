@@ -4,6 +4,8 @@ import API from '../../api'
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
+import io from "socket.io-client";
+import Config from './config'
 
 class RuntimeStatus extends Component {
     constructor(props) {
@@ -35,6 +37,24 @@ class RuntimeStatus extends Component {
     async componentDidMount() {
         await this.isLocalAgentOnline()
         await this.loadSystems()
+        const userInfo = await API.getUserInfo();
+        if(this.state.isLocalAgentOnline) {
+            const socket = io(Config.api_url, {
+                path: "/socket_" + userInfo.username,
+                transportOptions: {
+                    polling: {
+                        extraHeaders: {
+                            'Authorization': 'Bearer ' + localStorage.getItem("userToken")
+                        }
+                    }
+                }
+            });
+            socket.on("statusUpdate", (data) => {
+                console.log(data)
+            })
+
+
+        }
     }
 
     async loadSystems() {
