@@ -5,7 +5,7 @@ import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import io from "socket.io-client";
-import Config from './config'
+import Config from '../../config';
 
 class RuntimeStatus extends Component {
     constructor(props) {
