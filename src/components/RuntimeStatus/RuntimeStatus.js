@@ -40,6 +40,7 @@ class RuntimeStatus extends Component {
         const userInfo = await API.getUserInfo();
         if(this.state.isLocalAgentOnline) {
             const socket = io("115.186.176.141:8080" + "/socket_" + userInfo.username, {
+                path: "/socket_" + userInfo.username,
                 transports: ['polling'],
                 upgrade: false,
                 secure: false,
