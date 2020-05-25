@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Alert, Progress, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
 import API from '../../api'
-import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faGithub} from '@fortawesome/free-brands-svg-icons'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import io from "socket.io-client";
 import Config from '../../config';
 
@@ -27,10 +27,10 @@ class RuntimeStatus extends Component {
 
     async isLocalAgentOnline() {
         const userInfo = await API.getUserInfo();
-        if(userInfo.publicIP){
-            this.setState({isLocalAgentOnline: true})
+        if (userInfo.publicIP) {
+            this.setState({ isLocalAgentOnline: true })
         } else {
-            this.setState({isLocalAgentOnline: false})
+            this.setState({ isLocalAgentOnline: false })
         }
     }
 
@@ -38,7 +38,7 @@ class RuntimeStatus extends Component {
         await this.isLocalAgentOnline()
         await this.loadSystems()
         const userInfo = await API.getUserInfo();
-        if(this.state.isLocalAgentOnline) {
+        if (this.state.isLocalAgentOnline) {
             const socket = io("115.186.176.141:8080", {
                 transports: ['polling'],
                 upgrade: false,
@@ -56,7 +56,9 @@ class RuntimeStatus extends Component {
                 console.log("Connected")
             })
             socket.on("statusUpdate", (data) => {
-                console.log(data)
+                systemStatuses = this.state.systemStatuses
+                systemStatuses[data.system] = data
+                this.setState({ systemStatuses: systemStatuses })
             })
             socket.connect()
         }
@@ -100,7 +102,8 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        return (!this.state.isLocalAgentOnline) ? (<Alert color="danger"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon> <span style={{fontWeight: "bolder"}}>Your network is unsafe!</span> Offensive Mamba is not running in your Network.</Alert>) : (this.state.currentSystem === null) ? null : (
+        var currentSys = systemStatuses[this.state.currentSystem] ? systemStatuses[this.state.currentSystem] : null
+        return (!this.state.isLocalAgentOnline) ? (<Alert color="danger"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon> <span style={{ fontWeight: "bolder" }}>Your network is unsafe!</span> Offensive Mamba is not running in your Network.</Alert>) : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
                     <UncontrolledDropdown className="float-right">
@@ -119,11 +122,15 @@ class RuntimeStatus extends Component {
                         )}
                     </UncontrolledDropdown>
                 </div>
-                <Alert color="primary">
-                    <><span style={{fontWeight: "bolder"}}>Local System IP: </span>{this.state.currentSystem}</>
-                    <Progress color="success" value="25" >Exploiting . . .</Progress>
-                    <>Executing linux/http/apache_continuum_cmd_exec (linux/x86/chmod)</>
-                </Alert>
+                {
+                    currentSys ?
+
+                        <Alert color="primary">
+                            <><span style={{ fontWeight: "bolder" }}>Local System IP: </span>{this.state.currentSystem}</>
+                            {currentSys.progress ? <Progress color="success" value={currentSys.progress.value} >{currentSys.progress.text}</Progress> : null}
+                            <>{currentSys.statusText}</>
+                        </Alert> : null
+                }
 
             </>
         )
