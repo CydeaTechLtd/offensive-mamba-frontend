@@ -56,7 +56,7 @@ class RuntimeStatus extends Component {
                 console.log("Connected")
             })
             socket.on("statusUpdate", (data) => {
-                systemStatuses = this.state.systemStatuses
+                var systemStatuses = this.state.systemStatuses
                 systemStatuses[data.system] = data
                 this.setState({ systemStatuses: systemStatuses })
             })
@@ -102,7 +102,7 @@ class RuntimeStatus extends Component {
     }
 
     render() {
-        var currentSys = systemStatuses[this.state.currentSystem] ? systemStatuses[this.state.currentSystem] : null
+        var currentSys = this.state.systemStatuses[this.state.currentSystem] ? this.state.systemStatuses[this.state.currentSystem] : null
         return (!this.state.isLocalAgentOnline) ? (<Alert color="danger"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon> <span style={{ fontWeight: "bolder" }}>Your network is unsafe!</span> Offensive Mamba is not running in your Network.</Alert>) : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
