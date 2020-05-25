@@ -129,7 +129,7 @@ class RuntimeStatus extends Component {
                             <><span style={{ fontWeight: "bolder" }}>Local System IP: </span>{this.state.currentSystem}</>
                             {currentSys.progress ? <Progress color="success" value={currentSys.progress.value} >{currentSys.progress.text}</Progress> : null}
                             <p>{currentSys.statusText}<ReactAnimatedEllipsis fontSize="1rem" /></p>
-                        </Alert> : <Alert color="primary">Waiting for status from {this.state.currentSystem}<ReactAnimatedEllipsis /></Alert>
+                        </Alert> : <Alert color="primary">Waiting for status from {this.state.currentSystem}<ReactAnimatedEllipsis fontSize="1rem"/></Alert>
                 }
 
             </>
