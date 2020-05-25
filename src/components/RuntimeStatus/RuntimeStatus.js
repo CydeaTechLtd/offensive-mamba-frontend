@@ -5,7 +5,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import io from "socket.io-client";
-import Config from '../../config';
+import ReactAnimatedEllipsis from 'react-animated-ellipsis'
 
 class RuntimeStatus extends Component {
     constructor(props) {
@@ -128,8 +128,8 @@ class RuntimeStatus extends Component {
                         <Alert color="primary">
                             <><span style={{ fontWeight: "bolder" }}>Local System IP: </span>{this.state.currentSystem}</>
                             {currentSys.progress ? <Progress color="success" value={currentSys.progress.value} >{currentSys.progress.text}</Progress> : null}
-                            <p>{currentSys.statusText}</p>
-                        </Alert> : <Alert color="primary">Waiting for status from {this.state.currentSystem} . . .</Alert>
+                            <p>{currentSys.statusText}<ReactAnimatedEllipsis /></p>
+                        </Alert> : <Alert color="primary">Waiting for status from {this.state.currentSystem}<ReactAnimatedEllipsis /></Alert>
                 }
 
             </>
