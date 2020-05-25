@@ -38,30 +38,28 @@ class RuntimeStatus extends Component {
         await this.isLocalAgentOnline()
         await this.loadSystems()
         const userInfo = await API.getUserInfo();
-        if (this.state.isLocalAgentOnline) {
-            const socket = io("115.186.176.141:8080", {
-                transports: ['polling'],
-                upgrade: false,
-                secure: false,
-                transportOptions: {
-                    polling: {
-                        extraHeaders: {
-                            'Authorization': 'Bearer ' + localStorage.getItem("userToken")
-                        }
+        const socket = io("115.186.176.141:8080", {
+            transports: ['polling'],
+            upgrade: false,
+            secure: false,
+            transportOptions: {
+                polling: {
+                    extraHeaders: {
+                        'Authorization': 'Bearer ' + localStorage.getItem("userToken")
                     }
-                },
-                query: "request=subscribe"
-            });
-            socket.on("connect", () => {
-                console.log("Connected")
-            })
-            socket.on("statusUpdate", (data) => {
-                var systemStatuses = this.state.systemStatuses
-                systemStatuses[data.system] = data
-                this.setState({ systemStatuses: systemStatuses })
-            })
-            socket.connect()
-        }
+                }
+            },
+            query: "request=subscribe"
+        });
+        socket.on("connect", () => {
+            console.log("Connected")
+        })
+        socket.on("statusUpdate", (data) => {
+            var systemStatuses = this.state.systemStatuses
+            systemStatuses[data.system] = data
+            this.setState({ systemStatuses: systemStatuses })
+        })
+        socket.connect()
     }
 
     async loadSystems() {
