@@ -39,7 +39,7 @@ class RuntimeStatus extends Component {
         await this.loadSystems()
         const userInfo = await API.getUserInfo();
         if(this.state.isLocalAgentOnline) {
-            const socket = io("115.186.176.141:8080" + "/socket.io/socket_" + userInfo.username, {
+            const socket = io("115.186.176.141:8080", {
                 transports: ['polling'],
                 upgrade: false,
                 secure: false,
@@ -49,7 +49,8 @@ class RuntimeStatus extends Component {
                             'Authorization': 'Bearer ' + localStorage.getItem("userToken")
                         }
                     }
-                }
+                },
+                query: "request=subscribe"
             });
             socket.on("connect", () => {
                 console.log("Connected")
