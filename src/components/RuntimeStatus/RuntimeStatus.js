@@ -128,7 +128,7 @@ class RuntimeStatus extends Component {
                         <Alert color="primary">
                             <><span style={{ fontWeight: "bolder" }}>Local System IP: </span>{this.state.currentSystem}</>
                             {currentSys.progress ? <Progress color="success" value={currentSys.progress.value} >{currentSys.progress.text}</Progress> : null}
-                            <>{currentSys.statusText}</>
+                            <p>{currentSys.statusText}</p>
                         </Alert> : null
                 }
 
