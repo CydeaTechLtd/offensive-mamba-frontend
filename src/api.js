@@ -102,7 +102,7 @@ var API = {
         return response
     },
     searchVulnersByID: async (id) => {
-        var response = await API.call("exploitcve/searchVulnersByID", "POST", true, {}, {resId: id})
+        var response = await API.call("exploit/searchVulnersByID", "POST", true, {}, {resId: id})
         return response
     },
 
