@@ -1,5 +1,6 @@
 import Config from './config'
 var base = Config.api_url
+var vulnersBase = Config.vulners_api_url
 var defaultHeaders = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem("userToken")
@@ -99,6 +100,30 @@ var API = {
     verifyemail: async (code) => {
         var response = await API.call("user/verifyemail", "POST", true, {}, {code: code})
         return response
+    },
+
+    vulners: {
+        searchByID: async (id) => {
+            var response = await API.vulners.call("search/id/", {id: id})
+            return response
+        },
+        call: async (route, body={}) => {
+            body['apiKey'] = process.env.vulners_api_key
+            var response = await fetch(vulnersBase + route, {
+                method: "POST",
+                cache: 'no-cache',
+                mode: 'cors',
+                headers: {
+                    "accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify(body)
+            })
+            var responseJSON = await response.json()
+            console.log("API REQUEST RESPONSE " + vulnersBase + route + " " + JSON.stringify(responseJSON)); // DEBUG INFO
+            return responseJSON
+        }
     }
 }
 
