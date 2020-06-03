@@ -101,6 +101,10 @@ var API = {
         var response = await API.call("user/verifyemail", "POST", true, {}, {code: code})
         return response
     },
+    searchVulnersByID: async (id) => {
+        var response = await API.call("ExploitCVE/searchVulnersByID", "POST", true, {}, {resId: id})
+        return response
+    },
 
     vulners: {
         searchByID: async (id) => {
@@ -113,13 +117,10 @@ var API = {
             console.log("Request Body: " + JSON.stringify(body))
             var response = await fetch(vulnersBase + route, {
                 method: "POST",
-                cache: 'no-cache',
-                mode: 'cors',
                 headers: {
                     "accept": "application/json",
                     "Content-Type": "application/json"
                 },
-                referrerPolicy: 'no-referrer',
                 body: JSON.stringify(body)
             })
             var responseJSON = await response.json()
