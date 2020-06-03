@@ -20,9 +20,10 @@ class PrivateRoute extends Component {
         if(this.state.isChecking) {
             return null
         }
+        console.log(this.props)
         return (
             this.state.loggedIn === true
-              ? <Route {... this.props} />
+              ? <Route {...this.props} />
               : <Redirect to='/login' />
         )
     }
