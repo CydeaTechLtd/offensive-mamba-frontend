@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Container, NavItem, Nav, Col, Row, NavLink } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartBar, faNetworkWired, faShieldAlt, faExclamationTriangle, faBug, faSkullCrossbones, faLaptop, faUserCircle, faScrewdriver } from '@fortawesome/free-solid-svg-icons'
-import PropTypes from 'prop-types';
 import "./SidebarLayout.css"
 
 class SidebarLayout extends Component {
@@ -66,10 +65,6 @@ class SidebarLayout extends Component {
             </Row>
         </Container>)
     }
-}
-
-SidebarLayout.propTypes = {
-    component: PropTypes.instanceOf(React.Component)
 }
 
 export default SidebarLayout;
