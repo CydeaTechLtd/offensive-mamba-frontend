@@ -109,6 +109,7 @@ var API = {
         },
         call: async (route, body={}) => {
             body['apiKey'] = process.env.vulners_api_key
+            console.log("Request Body: " + JSON.stringify(body))
             var response = await fetch(vulnersBase + route, {
                 method: "POST",
                 cache: 'no-cache',
