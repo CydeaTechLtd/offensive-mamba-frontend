@@ -34,7 +34,7 @@ class App extends Component {
         <ProtectedRoute exact path='/reports/scanner'  render={ (props) => <SidebarLayout {...props} component={<ScannerReports />} /> } />
         <ProtectedRoute exact path='/reports/exploitation'  render={ (props) => <SidebarLayout {...props} component={<ExploitationReports />} /> } />
         <ProtectedRoute exact path='/reports/postexploitation'  render={ (props) => <SidebarLayout {...props} component={<PostExploitationReports />} /> } />
-        <ProtectedRoute exact path='/explore/exploits/:exploit'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit />} /> } />
+        <ProtectedRoute exact path='/explore/exploits/*'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit />} /> } />
         <ProtectedRoute exact path='/settings/profile'  render={ (props) => <SidebarLayout {...props} component={<ProfileSettings />} /> } />
         <ProtectedRoute exact path='/settings/agent'  render={ (props) => <SidebarLayout {...props} component={<AgentSettings />} /> } />
         <ProtectedRoute exact path='/logout' component={Logout} />
