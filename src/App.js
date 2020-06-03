@@ -30,14 +30,14 @@ class App extends Component {
         <PublicRoute exact path='/login' component={Login} />
         <PublicRoute exact path='/signup' component={Signup} />
         <PublicRoute exact path='/forgotpassword' component={ForgotPassword} />
-        <ProtectedRoute exact path='/dashboard'  render={ (props) => <SidebarLayout {...props} component={<Insights />} /> } />
-        <ProtectedRoute exact path='/reports/scanner'  render={ (props) => <SidebarLayout {...props} component={<ScannerReports />} /> } />
-        <ProtectedRoute exact path='/reports/exploitation'  render={ (props) => <SidebarLayout {...props} component={<ExploitationReports />} /> } />
-        <ProtectedRoute exact path='/reports/postexploitation'  render={ (props) => <SidebarLayout {...props} component={<PostExploitationReports />} /> } />
-        <ProtectedRoute exact path='/explore/exploits/*'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit />} /> } />
-        <ProtectedRoute exact path='/explore/exploits'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit />} /> } />
-        <ProtectedRoute exact path='/settings/profile'  render={ (props) => <SidebarLayout {...props} component={<ProfileSettings />} /> } />
-        <ProtectedRoute exact path='/settings/agent'  render={ (props) => <SidebarLayout {...props} component={<AgentSettings />} /> } />
+        <ProtectedRoute exact path='/dashboard'  render={ (props) => <SidebarLayout {...props} component={<Insights  {...props}/>} /> } />
+        <ProtectedRoute exact path='/reports/scanner'  render={ (props) => <SidebarLayout {...props} component={<ScannerReports {...props} />} /> } />
+        <ProtectedRoute exact path='/reports/exploitation'  render={ (props) => <SidebarLayout {...props} component={<ExploitationReports {...props} />} /> } />
+        <ProtectedRoute exact path='/reports/postexploitation'  render={ (props) => <SidebarLayout {...props} component={<PostExploitationReports {...props}/>} /> } />
+        <ProtectedRoute exact path='/explore/exploits/*'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit {...props} />} /> } />
+        <ProtectedRoute exact path='/explore/exploits'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit {...props} />} /> } />
+        <ProtectedRoute exact path='/settings/profile'  render={ (props) => <SidebarLayout {...props} component={<ProfileSettings {...props} />} /> } />
+        <ProtectedRoute exact path='/settings/agent'  render={ (props) => <SidebarLayout {...props} component={<AgentSettings {...props} />} /> } />
         <ProtectedRoute exact path='/logout' component={Logout} />
         <ProtectedRoute exact path='/verifyemail' component={VerifyEmail} />
         
