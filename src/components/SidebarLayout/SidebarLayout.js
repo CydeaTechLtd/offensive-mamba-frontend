@@ -35,7 +35,7 @@ class SidebarLayout extends Component {
                                     <NavLink tag={Link} to="/reports/postexploitation"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon> Post-Exploitation</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} to="/reports/misconfigurations"><FontAwesomeIcon icon={ faScrewdriver }></FontAwesomeIcon> Misconfiguration</NavLink>
+                                    {/* <NavLink tag={Link} to="/reports/misconfigurations"><FontAwesomeIcon icon={ faScrewdriver }></FontAwesomeIcon> Misconfiguration</NavLink> */}
                                 </NavItem>
                             </Nav>
                             <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"><span>Explore</span></h6>
