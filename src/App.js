@@ -19,6 +19,7 @@ import ScannerReports from './components/ScannerReports/ScannerReports'
 import ExploitationReports from './components/ExploitationReports/ExploitationReports'
 import PostExploitationReports from './components/PostExploitationReports/PostExploitationReports'
 import ExploreExploit from './components/ExploreExploit/ExploreExploit'
+import ExploreCVE from './components/ExploreCVE/ExploreCVE'
 class App extends Component {
   render() {
     return (
@@ -35,6 +36,8 @@ class App extends Component {
         <ProtectedRoute exact path='/reports/exploitation'  render={ (props) => <SidebarLayout {...props} component={<ExploitationReports {...props} />} /> } />
         <ProtectedRoute exact path='/reports/postexploitation'  render={ (props) => <SidebarLayout {...props} component={<PostExploitationReports {...props}/>} /> } />
         <ProtectedRoute exact path='/explore/exploits/*'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit {...props} />} /> } />
+        <ProtectedRoute exact path='/explore/cves'  render={ (props) => <SidebarLayout {...props} component={<ExploreCVE {...props} />} /> } />
+        <ProtectedRoute exact path='/explore/cves/*'  render={ (props) => <SidebarLayout {...props} component={<ExploreCVE {...props} />} /> } />
         <ProtectedRoute exact path='/explore/exploits'  render={ (props) => <SidebarLayout {...props} component={<ExploreExploit {...props} />} /> } />
         <ProtectedRoute exact path='/settings/profile'  render={ (props) => <SidebarLayout {...props} component={<ProfileSettings {...props} />} /> } />
         <ProtectedRoute exact path='/settings/agent'  render={ (props) => <SidebarLayout {...props} component={<AgentSettings {...props} />} /> } />
