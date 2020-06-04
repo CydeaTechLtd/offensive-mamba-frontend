@@ -34,10 +34,8 @@ class ExploreCVE extends Component {
                         <Row>{new Date(this.state.vulnersInfo.modified).toLocaleDateString()}</Row>
                     </Col>
                 </Row>
-                <Row>
-                    <Row><Col xs="12"><h3>Description</h3></Col></Row>
-                    <Row><Col xs="12">{this.state.vulnersInfo.description}</Col></Row>
-                </Row>
+                <Row><Col xs="12"><h3>Description</h3></Col></Row>
+                <Row><Col xs="12">{this.state.vulnersInfo.description}</Col></Row>
 
                 <Row>
                     <Col xs="12"><h3>Severity</h3></Col>
