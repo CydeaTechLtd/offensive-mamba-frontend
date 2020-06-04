@@ -41,12 +41,12 @@ class ExploreCVE extends Component {
                     </Row>
 
                     <Row>
-                        <Row><h3>Severity</h3></Row>
-                        <Row>
-                            <Col>
-                                {this.state.vulnersInfo.cvss.score}
-                            </Col>
-                        </Row>
+                        <Col xs="12"><h3>Severity</h3></Col>
+                    </Row>
+                    <Row>
+                        <Col xs="12">
+                            {this.state.vulnersInfo.cvss.score}
+                        </Col>
                     </Row>
                 </Container>
             </Container>)
