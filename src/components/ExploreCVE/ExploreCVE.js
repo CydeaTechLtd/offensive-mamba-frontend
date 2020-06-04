@@ -5,7 +5,7 @@ import API from '../../api'
 class ExploreCVE extends Component {
     constructor(props) {
         super(props)
-        if (props.match == undefined || props.match == null || props.match.params === {} || props.match.params[0] === "") {
+        if (props.match == undefined || props.match == null || props.match.params[0] == undefined || props.match.params === {} || props.match.params[0] === "") {
             this.state = { cve: null, loading: false }
         } else {
             this.state = { cve: props.match.params[0].toUpperCase(), loading: true, vulnersInfo: null }
