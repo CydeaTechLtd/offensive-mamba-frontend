@@ -52,4 +52,4 @@ class ExploreCVE extends Component {
     }
 }
 
-export default ExploreExploit
+export default ExploreCVE
