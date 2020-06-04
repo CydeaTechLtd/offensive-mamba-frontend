@@ -41,9 +41,9 @@ class ExploreCVE extends Component {
                     </Row>
 
                     <Row>
-                        <Row><h3>Source Code</h3></Row>
+                        <Row><h3>Severity</h3></Row>
                         <Row>
-                            {/* <Code codeString={this.state.vulnersInfo.sourceData}/> */}
+                            {this.state.vulnersInfo.cvss.score}
                         </Row>
 
                     </Row>
