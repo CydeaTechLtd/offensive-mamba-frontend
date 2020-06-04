@@ -26,7 +26,7 @@ class ExploreCVE extends Component {
             <Container fluid={true} >
                 <Row>
                     <Col xs="2">
-                        {(this.state.vulnersInfo.id.startsWith("MSF:")? <img src="/images/metasploit.webp" alt="Metasploit Icon" />:null)}
+                        {(this.state.vulnersInfo.id.startsWith("MSF:") ? <img src="/images/metasploit.webp" alt="Metasploit Icon" /> : null)}
                     </Col>
                     <Col xs="10">
                         <Row><h2>{this.state.vulnersInfo.title}</h2></Row>
@@ -43,9 +43,10 @@ class ExploreCVE extends Component {
                     <Row>
                         <Row><h3>Severity</h3></Row>
                         <Row>
-                            {this.state.vulnersInfo.cvss.score}
+                            <Col>
+                                {this.state.vulnersInfo.cvss.score}
+                            </Col>
                         </Row>
-
                     </Row>
                 </Container>
             </Container>)
