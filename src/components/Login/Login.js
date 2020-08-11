@@ -95,9 +95,6 @@ class Login extends Component {
           <Button type="submit" className="btn-success ">Login</Button>
         </Container>
       </Form>
-      <Container>
-        <Link to="/forgotpassword">Forgot Password?</Link>
-      </Container>
     </Container>
   }
 }

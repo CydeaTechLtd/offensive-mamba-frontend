@@ -38,11 +38,25 @@ var API = {
     },
 
     getUserInfo: async () => {
-        var response =  await API.call("user/", "POST", false)
+        var response =  await API.call("user/", "POST", true)
         if(response.success) {
             return response.data
         } else {
             return null
+        }
+    },
+
+    updateUserInfo: async (firstname, lastname, companyname) => {
+        var response = await API.call("user/updateinfo", "POST", true, {}, {firstname: firstname, lastname: lastname, companyname: companyname})
+        return response
+    },
+
+    updatePass: async (newpass, confirmpass) => {
+        if(newpass !== confirmpass) {
+            return {'success': false, 'error': 'Passwords do not match.'}
+        } else {
+            var response = await API.call("user/changepassword", "POST", true, {}, {newpassword: newpass})
+            return response
         }
     },
 
@@ -66,6 +80,12 @@ var API = {
 
     getLatestExploitationData: async (ipaddress) => {
         var response = await API.call("agent/latestexploitlogs", "POST", true, {}, {localip: ipaddress})
+        return response
+    },
+
+    getLatestPostExploitationData: async (ipaddress) => {
+        var response = await API.call("agent/latestpostexploitlogs", "POST", true, {}, {localip: ipaddress})
+        console.log(response)
         return response
     },
 

@@ -116,7 +116,7 @@ class AgentSettings extends Component {
                         return (<tr key={i}>
                             <th scope="row">{i + 1}</th>
                             <td>{element}</td>
-                            <td><Button className="mx-1">Edit</Button><Button className="mx-1" onClick={() => { this.removeSystem(element) }}>Remove</Button></td>
+                            <td><Button className="mx-1 d-none">Edit</Button><Button className="mx-1" onClick={() => { this.removeSystem(element) }}>Remove</Button></td>
                         </tr>)
                     })}
                 </tbody>

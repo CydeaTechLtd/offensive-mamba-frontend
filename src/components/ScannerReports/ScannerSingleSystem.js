@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Alert, Table } from 'reactstrap'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faInfoCircle, faUndo } from '@fortawesome/free-solid-svg-icons'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import API from '../../api'
 
 class ScannerSingleSystem extends Component {
@@ -28,7 +28,7 @@ class ScannerSingleSystem extends Component {
                 </Row>
                 <Row>
                 <Col sm="12">
-                    {(Object.keys(this.state.openPorts).length > 0  || this.state.closedPorts.length > 0) ? (
+                    {((this.state.openPorts != undefined && this.state.openPorts != null && this.state.openPorts != {}) || (this.state.closedPorts != undefined && this.state.openPorts != null && this.state.closedPorts != [])) && ((Object.keys(this.state.openPorts).length > 0  || this.state.closedPorts.length > 0)) ? (
                         <Table>
                             <thead>
                                 <tr>
@@ -36,6 +36,7 @@ class ScannerSingleSystem extends Component {
                                     <th>State</th>
                                     <th>Product</th>
                                     <th>Version</th>
+                                    <th>Applicable CVEs</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,8 +47,13 @@ class ScannerSingleSystem extends Component {
                                             <tr>
                                                 <td>{port}</td>
                                                 <td>Open</td>
-                                                <td>{portData.prod_name}</td>
+                                                <td>{(portData.friendly_name != undefined) ? portData.friendly_name : portData.prod_name}</td>
                                                 <td>{(portData.version === 0) ? "unknown" : portData.version.toFixed(2) }</td>
+                                                <td>{ (Object.keys(portData.cves).length > 0) ? (
+                                                    Object.keys(portData.cves).map((cve, i) => {
+                                                    return <><Link to={"/explore/cves/" + cve}>{cve}</Link><br/></>
+                                                    })
+                                                ): <>-</>}</td>
                                             </tr>
                                         )
                                     })

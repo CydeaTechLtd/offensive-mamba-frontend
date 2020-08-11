@@ -104,7 +104,7 @@ class RuntimeStatus extends Component {
         return (!this.state.isLocalAgentOnline) ? (<Alert color="danger"><FontAwesomeIcon icon={faExclamationTriangle}></FontAwesomeIcon> <span style={{ fontWeight: "bolder" }}>Your network is unsafe!</span> Offensive Mamba is not running in your Network.</Alert>) : (this.state.currentSystem === null) ? null : (
             <>
                 <div className="clearfix pb-2">
-                    <UncontrolledDropdown className="float-right">
+                    <UncontrolledDropdown className="float-right d-none">
                         <DropdownToggle caret style={{ width: "auto" }}>
                             Change Local System
                         </DropdownToggle>
