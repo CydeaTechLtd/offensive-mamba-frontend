@@ -65,7 +65,7 @@ class Signup extends Component {
 
     async submitForm(e) {
         e.preventDefault()
-        this.setState({error: null, errors: null, message: null})
+        this.setState({error: null, errors: {}, message: null})
         var {firstname, lastname, emailaddress, username, password, companyname} = this.state
         var responseJSON = await API.signup(firstname, lastname, username, emailaddress, password, companyname)
         if(responseJSON.success) {
