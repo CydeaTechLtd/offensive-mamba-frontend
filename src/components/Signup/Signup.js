@@ -105,7 +105,7 @@ class Signup extends Component {
                                 placeholder="John"
                                 onChange={this.handleChange}
                                 value={this.state.firstname}
-                                valid={this.state.firstname.trim() !== "" && !this.state.errors.firstname }
+                                valid={this.state.firstname && this.state.firstname.trim() !== "" && !this.state.errors.firstname }
                                 invalid={!!this.state.errors.firstname}
                                 required
                             />
@@ -125,7 +125,7 @@ class Signup extends Component {
                                 placeholder="Smith"
                                 onChange={this.handleChange}
                                 value={this.state.lastname}
-                                valid={this.state.lastname.trim() !== "" && !this.state.errors.lastname }
+                                valid={this.state.lastname && this.state.lastname.trim() !== "" && !this.state.errors.lastname }
                                 invalid={!!this.state.errors.lastname}
                                 required
                             />
@@ -146,7 +146,7 @@ class Signup extends Component {
                                 placeholder="yourname@yourcompany.com"
                                 onChange={this.handleChange}
                                 value={this.state.emailaddress}
-                                valid={this.state.emailaddress.trim() !== "" && !this.state.errors.emailaddress }
+                                valid={this.state.emailaddress && this.state.emailaddress.trim() !== "" && !this.state.errors.emailaddress }
                                 invalid={!!this.state.errors.emailaddress}
                                 required
                             />
